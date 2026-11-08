@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dragon's Escrow ⚔️</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Crimson Text', Georgia, serif;
+      background-color: #0d0d0d;
+      background-image:
+        radial-gradient(ellipse at top, #1a0a00 0%, #0d0d0d 60%),
+        url('https://www.transparenttextures.com/patterns/dark-matter.png');
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #c9a84c;
+    }
+
+    .container { max-width: 800px; margin: 0 auto; }
+
+    /* Header */
+    .header { text-align: center; margin-bottom: 40px; position: relative; }
+
+    .header img {
+      width: 90px;
+      filter: drop-shadow(0 0 20px #ff6600) drop-shadow(0 0 40px #cc3300);
+      animation: flicker 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes flicker {
+      0%   { filter: drop-shadow(0 0 10px #ff6600) drop-shadow(0 0 20px #cc3300); opacity: 0.9; }
+      100% { filter: drop-shadow(0 0 25px #ff9900) drop-shadow(0 0 50px #ff4400); opacity: 1; }
+    }
+
+    .header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #c9a84c;
+      text-shadow: 0 0 20px #ff6600, 0 0 40px #cc3300;
+      margin: 16px 0 8px;
+      letter-spacing: 3px;
+    }
+
+    .header p {
+      color: #8a7040;
+      font-size: 1rem;
+      font-style: italic;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .divider {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c9a84c, #ff6600, #c9a84c, transparent);
+      margin: 20px 0;
+      box-shadow: 0 0 8px #ff6600;
+    }
+
+    /* Info box */
+    .info-box {
+      background: rgba(20, 10, 0, 0.85);
+      border: 1px solid #5a3e1b;
+      border-radius: 8px;
+      padding: 20px 26px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(180, 80, 0, 0.2), inset 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    .info-box h2 {
+      font-family: 'Cinzel', serif;
+      color: #c9a84c;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .info-box ul { list-style: none; }
+    .info-box ul li {
+      color: #9a7a3a;
+      font-size: 1rem;
+      padding: 4px 0;
+    }
+    .info-box ul li::before { content: "⚔️ "; }
+
+    .info-box a {
+      color: #ff9922;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .info-box a:hover { color: #ffcc44; text-decoration: underline; }
+
+    /* Cards */
+    .card {
+      background: rgba(15, 8, 0, 0.9);
+      border: 1px solid #5a3e1b;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(180, 80, 0, 0.15), inset 0 0 40px rgba(0,0,0,0.6);
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+    .card:hover {
+      border-color: #c9a84c;
+      box-shadow: 0 0 30px rgba(200, 120, 0, 0.3);
+    }
+
+    .card h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #c9a84c;
+      text-shadow: 0 0 10px #ff6600;
+    }
+
+    /* Inputs */
+    input {
+      width: 100%;
+      padding: 11px 16px;
+      margin: 6px 0;
+      border: 1px solid #5a3e1b;
+      border-radius: 6px;
+      font-family: 'Crimson Text', serif;
+      font-size: 1rem;
+      color: #c9a84c;
+      background: rgba(10, 5, 0, 0.8);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus {
+      border-color: #c9a84c;
+      box-shadow: 0 0 8px rgba(200, 160, 50, 0.3);
+    }
+    input::placeholder { color: #4a3415; }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 11px 28px;
+      border: 1px solid #c9a84c;
+      border-radius: 4px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-top: 12px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      background: linear-gradient(135deg, #2a1500, #1a0d00);
+      color: #c9a84c;
+      box-shadow: 0 0 10px rgba(200,120,0,0.2);
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, #5a2d00, #3a1a00);
+      box-shadow: 0 0 20px rgba(255,120,0,0.4);
+      color: #ffdd77;
+      border-color: #ffaa33;
+    }
+    .btn:active { transform: scale(0.97); }
+
+    /* Status messages */
+    .status-msg {
+      margin-top: 12px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      word-break: break-all;
+      display: none;
+      font-family: 'Crimson Text', serif;
+    }
+    .status-msg.show { display: block; }
+    .status-success { background: rgba(0,30,0,0.8); color: #44cc66; border: 1px solid #226633; }
+    .status-error   { background: rgba(30,0,0,0.8); color: #ff4444; border: 1px solid #661122; }
+    .status-info    { background: rgba(20,10,0,0.8); color: #c9a84c; border: 1px solid #5a3e1b; }
+
+    #walletAddress {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #8a7040;
+      font-style: italic;
+    }
+
+    #invoiceResult {
+      margin-top: 12px;
+      background: rgba(10,5,0,0.9);
+      border: 1px solid #5a3e1b;
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 1rem;
+      color: #c9a84c;
+      line-height: 1.9;
+      display: none;
+    }
+    #invoiceResult.show { display: block; }
+    #invoiceResult strong { color: #ff9922; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: #4a3415;
+      font-size: 0.85rem;
+      font-style: italic;
+      margin-top: 30px;
+      padding-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum" />
+    <h1>⚔️ Dragon's Escrow</h1>
+    <p>"From the halls of Erebor to the fires of Smaug — your invoices, sealed in the blockchain forever."</p>
+    <hr class="divider" />
+  </div>
+
+  <!-- Info Box -->
+  <div class="info-box">
+    <h2>📜 The Scrolls of Instruction</h2>
+    <ul>
+      <li>Forge an invoice with a reference, payee address & ETH amount</li>
+      <li>Pay the invoice — gold travels directly to the payee</li>
+      <li>Seek any invoice by its ancient ID number</li>
+      <li>All deeds are inscribed forever on the Ethereum chain</li>
+    </ul>
+    <p style="margin-top: 12px;">
+      🔥 Contract on Etherscan:
+      <a href="https://sepolia.etherscan.io/address/YOUR_CONTRACT_ADDRESS" target="_blank">
+        YOUR_CONTRACT_ADDRESS
+      </a>
+    </p>
+  </div>
+
+  <!-- Connect Wallet -->
+  <div class="card">
+    <h2>🗝️ The Gate of Entry</h2>
+    <p style="color:#8a7040; font-style:italic; margin-bottom:10px;">Connect your wallet to enter the realm of Erebor.</p>
+    <button class="btn" onclick="connectWallet()">Connect MetaMask</button>
+    <div id="walletAddress">No traveller has entered yet...</div>
+  </div>
+
+  <!-- Create Invoice -->
+  <div class="card">
+    <h2>🏔️ Forge an Invoice</h2>
+    <input id="invoiceRef"   placeholder="Invoice Reference (e.g. EREBOR-001)" />
+    <input id="payeeAddress" placeholder="Payee Wallet Address (0x...)" />
+    <input id="amountWei"    placeholder="Amount in Wei (e.g. 1000000000000000 = 0.001 ETH)" />
+    <button class="btn" onclick="createInvoice()">Forge Invoice</button>
+    <div id="createStatus" class="status-msg"></div>
+  </div>
+
+  <!-- Pay Invoice -->
+  <div class="card">
+    <h2>💰 Offer the Gold</h2>
+    <input id="payId"     placeholder="Invoice ID (e.g. 1)" />
+    <input id="payAmount" placeholder="Amount in Wei (must match invoice amount)" />
+    <button class="btn" onclick="payInvoice()">Send Payment</button>
+    <div id="payStatus" class="status-msg"></div>
+  </div>
+
+  <!-- Get Invoice -->
+  <div class="card">
+    <h2>🔍 Consult the Ancient Records</h2>
+    <input id="getInvoiceId" placeholder="Invoice ID (e.g. 1)" />
+    <button class="btn" onclick="getInvoice()">Seek the Scroll</button>
+    <div id="invoiceResult"></div>
+  </div>
+
+  <div class="footer">
+    "Not all those who wander are lost — but all ETH sent is recorded." 🐉<br/>
+    Talha_Bin_Omar · MG3012 Blockchain Technology · Fall 2026 · Sepolia Testnet
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script>
+  const CONTRACT_ADDRESS = "0x5fF165C7961b418df8Cd06EeB02DbEf48726a1e9";
+
+  const ABI = [
+    "function createInvoice(string memory _invoiceRef, address payable _payee, uint256 _amountInWei) public returns (uint256)",
+    "function payInvoice(uint256 _id) public payable",
+    "function getInvoice(uint256 _id) public view returns (uint256, string, address, address, uint256, uint8)",
+    "function getInvoiceCount() public view returns (uint256)",
+    "function owner() public view returns (address)"
+  ];
+
+  let provider, signer, contract;
+
+  function showStatus(id, msg, type) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.className = "status-msg show status-" + type;
+  }
+
+  async function connectWallet() {
+    if (typeof window.ethereum === "undefined") {
+      alert("MetaMask not found! Install it to enter the realm.");
+      return;
+    }
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+    signer = provider.getSigner();
+    contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
+    const address = await signer.getAddress();
+    document.getElementById("walletAddress").innerText = "⚔️ Traveller entered: " + address;
+  }
+
+  async function createInvoice() {
+    if (!contract) { alert("Connect wallet first!"); return; }
+    const ref    = document.getElementById("invoiceRef").value;
+    const payee  = document.getElementById("payeeAddress").value;
+    const amount = document.getElementById("amountWei").value;
+    try {
+      showStatus("createStatus", "⏳ Forging invoice in the fires of Erebor...", "info");
+      const tx = await contract.createInvoice(ref, payee, amount);
+      await tx.wait();
+      showStatus("createStatus", "✅ Invoice forged! TX: " + tx.hash, "success");
+    } catch (err) {
+      showStatus("createStatus", "❌ " + err.message, "error");
+    }
+  }
+
+  async function payInvoice() {
+    if (!contract) { alert("Connect wallet first!"); return; }
+    const id     = document.getElementById("payId").value;
+    const amount = document.getElementById("payAmount").value;
+    try {
+      showStatus("payStatus", "⏳ Sending gold across the Misty Mountains...", "info");
+      const tx = await contract.payInvoice(id, { value: amount });
+      await tx.wait();
+      showStatus("payStatus", "✅ Gold delivered! TX: " + tx.hash, "success");
+    } catch (err) {
+      showStatus("payStatus", "❌ " + err.message, "error");
+    }
+  }
+
+  async function getInvoice() {
+    if (!contract) { alert("Connect wallet first!"); return; }
+    const id = document.getElementById("getInvoiceId").value;
+    try {
+      const inv = await contract.getInvoice(id);
+      const statusText = inv[5] === 0 ? "🟡 Pending" : "✅ Paid";
+      const el = document.getElementById("invoiceResult");
+      el.className = "show";
+      el.innerHTML = `
+        <strong>ID:</strong> ${inv[0]}<br/>
+        <strong>Reference:</strong> ${inv[1]}<br/>
+        <strong>Payee:</strong> ${inv[2]}<br/>
+        <strong>Payer:</strong> ${inv[3] === "0x0000000000000000000000000000000000000000" ? "Awaiting payment..." : inv[3]}<br/>
+        <strong>Amount:</strong> ${inv[4]} Wei<br/>
+        <strong>Status:</strong> ${statusText}
+      `;
+    } catch (err) {
+      const el = document.getElementById("invoiceResult");
+      el.className = "show";
+      el.innerHTML = "❌ " + err.message;
+    }
+  }
+</script>
+</body>
+</html>
